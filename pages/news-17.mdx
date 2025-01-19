@@ -1,0 +1,67 @@
+---
+title: Rhino Linux 2025.1 & FOSDEM - Dynamic workspaces, new applications + more.
+date: 2025/01/19
+description: It's been a little while since our last snapshot release. The Rhino has kept on rolling and we are happy to announce the latest disk image release of Rhino Linux. This release comes with a large list of spectacular updates and improvements to the distribution, setting the stage for an amazing year.
+author: Rhino Linux Team
+---
+
+# Rhino Linux 2025.1 (& FOSDEM) - Dynamic workspaces, new applications + more.
+
+It's been a little while since our last snapshot release. We originally intended for a 2024.3 release, but this was delayed into the new year to allow us a bit more time to polish things up. The Rhino has kept on rolling and we are happy to announce the latest disk image release of Rhino Linux. This release comes with a large list of spectacular updates and improvements to the distribution, setting the stage for an amazing year. In addition, we have some more timely news to share...
+
+## FOSDEM 2025
+
+Rhino Linux will be at [FOSDEM 2025](https://fosdem.org/2025/)! We will be giving a talk on the distros track about the creation, maintenance, and future of Rhino Linux and Pacstall on **Sunday, February 2nd, at 2:30PM UTC**. The talk will be live-streamed and recorded, and we plan to release a full blog post of our script shortly after. Check out the details [here](https://fosdem.org/2025/schedule/event/fosdem-2025-4398-rhino-linux-and-pacstall-towards-a-rolling-ubuntu/), and we hope to see some of you there!
+
+Now that we have that out of the way, onto the release.
+
+To upgrade to 2025.1, please run:
+`rpk update -y`
+
+## Hello Rhino
+
+One of our more exciting changes will be the inclusion of our brand-new **Hello Rhino** application. Written in Rust and using IcedTK, this application serves to help provide useful links to our homepage, blog, Discord community and documentation. Hello Rhino will automatically launch after post installation to help jumpstart the Rhino journey.
+
+Hello Rhino was created by a new contributor, so we would like to extend a big thank you to [Sundaram Krishnan](https://github.com/sundaram123krishnan) for making this possible.
+
+## Dynamic workspaces in Unicorn
+
+The Unicorn Desktop finally has dynamic workspaces, bringing extra efficiency and flexibility to the already powerful Unicorn Desktop. Previously, with static workspaces, you were restricted to a maximum of four, or had to manually create and manage the number of spaces yourself. Unicorn will now automatically create a new workspace each time the previous ones have an application open on them, and once there are no applications open on a workspace, it will be destroyed. The decision to incorporate this feature draws inspiration from desktop environments like GNOME, and the expandable workflow they provide.
+
+## New GRUB Theme
+
+We are now shipping our own custom GRUB theme with Rhino Linux. While this is quite a small change, it brings a more modern feel to an often overlooked part of the Linux experience. Our new GRUB theme will make the Unicorn aesthetic more cohesive from the moment you boot up the installer.
+
+## Announcing Rhino Stampede
+
+We are happy to announce the release of **Rhino Stampede**, the Rhino Linux testing meta-package. We hope that by releasing a testing package, we are able to open the door for users and developers alike to test our new features with greater ease. Packages in Rhino Stampede are expected to be work in progress, so installing the package should be done with intention.
+
+You can install Rhino Stampede with: `rpk install rhino-stampede-dev`.
+
+- Our WIP icon theme, Unicons, is currently included in Rhino Stampede.
+
+## Pacstall Changes
+
+Pacstall has had several major releases between Rhino Linux 2024.2 and 2025.1. With Pacstall being integral to Rhino Linux, as well as sharing developers between projects, we feel it's important to include information about these releases as well.
+
+Pacstall's 5.5.x series brought in i18n/l10n support, so Pacstall can be translated and used in your native language! Check out the release and how to help with translations [here](https://github.com/pacstall/pacstall/releases/tag/5.5.0).
+
+Pacstall's 6.0.x series made several major changes to move towards package conformity. Importantly, the presumptive `_archive` variable has been removed, in favor of a new extract-to syntax for the `source` array. Additionally, all packages are now required to include the `arch` array (whereas before this was optional). Read more about the new features [here](https://github.com/pacstall/pacstall/releases/tag/6.0.0).
+
+Pacstall's 6.1.x series introduced a new special flag, `-x`/`--debug`, to improve and ease development of the package manager when working on fixing old or adding new features. Read more about how to use the new flag [here](https://github.com/pacstall/pacstall/releases/tag/6.1.0).
+
+In addition, as always, numerous bugs were squashed with these releases, and can be found listed in their respective links.
+
+Finally, alongside Pacstall 6.0.0 came the release of a multi-years long project, the Chaotic Pacstall Prebuilt Repository (PPR). The Chaotic PPR is a system where Pacstall builds debs from pacscripts and uploads them to an APT repository, meaning that you can enjoy prebuilt Pacstall packages without the build times. Learn how to install the PPR [here](https://ppr.pacstall.dev), and if there is a Pacstall package you want prebuilt, you can fill out a request [here](https://github.com/pacstall/chaotic-PPR/issues/new?template=PACKAGE-REQUEST.yml).
+
+## As well as...
+- Kernel version `6.12.3` ships by default on Generic ISO disk images.
+- Kernel version `6.9.0-okpine` ships by default on Pine64 images.
+- Kernel version `6.11.0-raspi` ships by default on Raspberry Pi images.
+- The issue with the *Install Rhino Linux* icon not displaying on the Desktop of the live image has been resolved.
+- The `unicorn-desktop-git` package has switched to architecture specific builds, to allow for split dependencies.
+- Building of `cortile`, the auto-tiling manager, has been moved to inside of Pacstall, to ensure updates are handled correctly.
+
+Many thanks, and happy rolling,
+
+The Rhino Linux Team.
