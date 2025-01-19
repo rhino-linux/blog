@@ -2,9 +2,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "concurrently \"pnpm run dev:next\" \"pnpm run dev:tailwind\"",
-    "dev:next": "next dev",
-    "dev:tailwind": "npx tailwindcss -i ./src/styles/src/input.css -o ./src/styles/output.css --watch",
+    "dev": "next dev & tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
     "build": "node ./scripts/gen-rss.js && next build",
     "start": "next start"
   },
