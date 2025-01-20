@@ -35,5 +35,5 @@ cat site_build_key
 ## How to use
 
 ```bash
-npx concurrently "pnpm run dev" "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+pnpm run dev
 ```
