@@ -1,0 +1,28 @@
+---
+title: "FOSDEM 2025 - Rhino Linux and Pacstall: Towards a Rolling Ubuntu"
+date: 2025/02/02
+description: Rhino Linux will be at FOSDEM 2025! We will be giving a talk on the distros track about the creation, maintenance, and future of Rhino Linux and Pacstall. The talk will be live-streamed and recorded, and we plan to update this blog post with our full script shortly after. Check out the details here, and we hope to see some of you there!
+author: Rhino Linux Team
+---
+
+# FOSDEM 2025 - Rhino Linux and Pacstall: Towards a Rolling Ubuntu
+
+Rhino Linux will be at [FOSDEM 2025](https://fosdem.org/2025/)! We will be giving a talk on the distros track about the creation, maintenance, and future of Rhino Linux and Pacstall on **Sunday, February 2nd, at 2:30PM UTC**. The talk will be live-streamed and recorded, and we plan to update this blog post with our full script shortly after. Check out the details [here](https://fosdem.org/2025/schedule/event/fosdem-2025-4398-rhino-linux-and-pacstall-towards-a-rolling-ubuntu/), and we hope to see some of you there!
+
+## Read the Script
+
+We plan to update this blog post with our full script shortly after the talk. For now, you can check out the abstract below. 
+
+### Abstract
+
+What if Ubuntu embraced a Rolling Release model? This might seem contradictory: Ubuntu typically follows a long-term support model with fixed, point-based releases, where packages remain stable at certain versions. In contrast, a rolling release model, commonly used by distributions based off of Arch Linux, requires ongoing, continuous package updates. While Ubuntu's standard model adheres to stability, it maintains a development branch called `devel`, akin to Debian's `sid` branch, on which it is based, and often even receiving updates sooner. While long-term support models prioritize security, rolling release models often cater more to user customization and development needs.
+
+The idea to create a rolling release variant for Ubuntu first manifested in the form of the [Rolling Rhino](https://github.com/wimpysworld/rolling-rhino) script in 2020, which allowed users to convert/upgrade their existing installs of Ubuntu to the `devel` branch, turning their familiar Ubuntu environments into Rolling Rhino ones. This concept was taken a step further in 2022, when a group of young developers turned it into a full-fledged fan flavour for Ubuntu, [Rolling Rhino Remix](https://rollingrhino.org), which included the notable addition of two utilities: `rhino-config`, which allowed users to switch from Ubuntu’s LTS kernel to the mainline or real-time kernels, and `rhino-update`, which served as a wrapper script for updating all APT and Snap packages on the system.
+
+Rolling Rhino Remix evolved rapidly that year, undergoing numerous upgrades and integrations, with a particular focus on enhancing package management capabilities. The `rhino-update` utility added support for components such as [Nala](https://gitlab.com/volian/nala) (a `libapt-pkg` front-end alternative), Flatpak, and most importantly, the [Pacstall](https://pacstall.dev) package manager. As the project evolved, it outgrew the simple Ubuntu flavour concept, transforming into a dynamically designed developer distribution, which led to the creation of [Rhino Linux](https://rhinolinux.org).
+
+One of the key distinctions between Rhino Linux and its predecessors is the full integration of the Pacstall package manager for handling much of the distribution’s core utilities and applications, such as the kernel, web browser, and IDE. Additionally, the distribution ships with the `rhino-pkg` utility, the successor to `rhino-update`, which serves as a wrapper script for Pacstall, APT, Flatpak, and Snap, while also extending beyond just updates, allowing users to search and install from all at once.
+
+[Pacstall](https://pacstall.dev) brings the package flexibility of Arch Linux’s AUR to Ubuntu and Debian, using `pacscripts` (similar to Arch's `PKGBUILDs`) to build `.deb` packages. With Pacstall, users can install from the community-maintained repository or source out-of-repository `.deb` packages, effectively making a stable Ubuntu base more adaptable to a rolling model. While Pacstall is available for almost all Ubuntu and Debian based distributions, Rhino Linux is built with Pacstall in mind from the ground up - and in consequence, the developer teams for Rhino Linux and Pacstall have largely crossed over.
+
+In this talk, two core team members will explore the history and technical foundation of both Rhino Linux and the Pacstall package manager, outline future directions, and, perhaps most importantly, share the challenges faced and insights gained from developing these projects as a small, student-led team.
