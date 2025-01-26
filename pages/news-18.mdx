@@ -1,0 +1,24 @@
+---
+title: New Issue Tracker & Hotfix Utility!
+date: 2025/01/26
+description: To improve management of issues, we have consolidated all issue tracking into a new triage repository, and have a new hotfix utility!
+author: Rhino Linux Team
+---
+
+#  New Issue Tracker & Hotfix Utility!
+
+We are happy to announce the latest developments in Rhino Linux, especially so soon after the release of 2025.1. We have now centralised all of our issue tracking into one [GitHub repository](https://github.com/rhino-linux/tracker), complete with issue templates and a large amount of labels. Furthermore, we have included instructions in the `README.md` on how to leave an informative, conscise bug report. We hope that by making these steps, we are able to triage issues and work towards solving these problems more quickly.
+
+We also are happy to announce the `rhino-hotfix` utility. 2025.1 unfortunately launched with an issue affecting sound output through PipeWire on many devices. We continually seek to improve aspects of the distribution, and this issue gave us room to work on implementing a safe, easy method to apply hotfixes and patches from the Rhino Linux Team.
+
+- You can find the hotfix for the PipeWire issue [on the Rhino Linux issue tracker](https://github.com/rhino-linux/tracker/issues/22).
+
+To query for the latest hotfixes, you can run `rhino-hotfix` on your system. You can also directly install a hotfix with `rhino-hotfix <name>`.  You can find the [developers documentation](https://wiki.rhinolinux.org/dev/hotfix-101) and [usage syntax](https://wiki.rhinolinux.org/user/hotfix) for `rhino-hotfix` on the Rhino Linux Wiki.
+
+To ensure it is installed on all systems, `rhino-hotfix` has been added as a dependency to all `rhino*core` pacakages. Please upgrade your system with `rpk update` to install the new utility.
+
+Our hotfixes are solely bash scripts, so they can be easily reviewed by members of our community. This also aims to reduce the barrier to contributing, so if you find an issue with the distribution, you are always able to submit a hotfix [here](https://github.com/rhino-linux/hotfix), or alert us to the issue [on our issue tracker](https://github.com/rhino-linux/tracker).
+
+Many thanks,
+
+The Rhino Linux Team.
