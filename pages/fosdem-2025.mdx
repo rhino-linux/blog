@@ -11,7 +11,7 @@ Rhino Linux will be at [FOSDEM 2025](https://fosdem.org/2025/)! We will be givin
 
 ## Read the Script
 
-We plan to update this blog post with our full script shortly after the talk. For now, you can check out the abstract below. 
+You can check out the abstract below, or jump right to [our introduction](/fosdem-2025#rhino-linux-and-pacstall-towards-a-rolling-ubuntu). A video recording of our talk will be linked here when it is has finished going through the review process. You can also [view our slides](https://fosdem.org/2025/events/attachments/fosdem-2025-4398-rhino-linux-and-pacstall-towards-a-rolling-ubuntu/slides/236533/FOSDEM202_J6xbC0L.pdf), and be sure to check out [Henry's blog](https://elsie19.github.io/Elsie19/2025-01-05-pacstall-history/) on the early history of Pacstall, too!
 
 ### Abstract
 
@@ -26,3 +26,163 @@ One of the key distinctions between Rhino Linux and its predecessors is the full
 [Pacstall](https://pacstall.dev) brings the package flexibility of Arch Linux’s AUR to Ubuntu and Debian, using `pacscripts` (similar to Arch's `PKGBUILDs`) to build `.deb` packages. With Pacstall, users can install from the community-maintained repository or source out-of-repository `.deb` packages, effectively making a stable Ubuntu base more adaptable to a rolling model. While Pacstall is available for almost all Ubuntu and Debian based distributions, Rhino Linux is built with Pacstall in mind from the ground up - and in consequence, the developer teams for Rhino Linux and Pacstall have largely crossed over.
 
 In this talk, two core team members will explore the history and technical foundation of both Rhino Linux and the Pacstall package manager, outline future directions, and, perhaps most importantly, share the challenges faced and insights gained from developing these projects as a small, student-led team.
+
+### Rhino Linux and Pacstall: Towards a Rolling Ubuntu
+***Presented by Adam Salt and Oren Klopfer***
+
+### 0.0 Introduction
+**AJ:**
+Hello everyone, I’m Adam and I’m the Founder & Desktop Lead for Rhino Linux
+
+**Oren:**
+And I’m Oren, I’m the Systems Lead and one of the main co-creators of the distribution. Thank you everyone for coming to our talk, and to those watching it on livestream; we’ve got quite a bit to tell you about, so we will jump right into it. 
+
+### 1.1 From a Script to a Remix
+**AJ:**
+We will start with some backstory: I created Rolling Rhino Remix, Rhino Linux’s predecessor, in March 2022 when I was 17 years old. I created the distribution out of boredom, and because I wanted to learn more about Linux. Since I started using Linux in 2020 I needed to learn as much as I could about it.
+
+I came across a script on GitHub, by Martin Wimpress, called “Rolling Rhino”, which converted an existing Ubuntu installation into a rolling release distribution. I was surprised that no one had turned this novel idea into its own “Ubuntu flavour” yet. So with my limited knowledge, I began to get to work on creating “Rolling Rhino Remix” using a tool called Cubic. While this wasn’t my first attempt at trying to create a distribution, I still lacked serious knowledge on how to get the job done properly.
+
+### 1.2 The making of Rolling Rhino Remix
+**AJ:**
+Since Rolling Rhino Remix was nothing more than a hobby project for me, I didn’t expect anyone to take it seriously. Despite this I still put it online, made a small website for it and kept the distribution updated, as it gave me something to work on.
+
+The core of the distribution was pretty simple. It was pretty close to upstream Ubuntu, but as a rolling release. We created a bash script to handle updates and pull the latest mainline kernels, and applied our own theming.
+
+More additions came to the distribution in future updates. We provided a TUI utility to switch between different desktops, finally switched away from CUBIC towards having our own disk image builder, which paved the way for us to ship a server image of Rolling Rhino Remix, and our flagship command-line utility, rhino-config, which allowed for people to choose which linux kernel and package managers they wished to use.
+
+One package manager we offered our users was Pacstall.
+
+### 2.1 A New Source Based Package Manager
+**Oren:**
+Pacstall was created in 2020 by one of our co-leads who could not be here today, Henry. You can check out his full blog detailing Pacstall's early history [here](https://elsie19.github.io/Elsie19/2025-01-05-pacstall-history/). His initial idea was a source based package manager on top of various Linux distributions and their in-house managers, for getting the most up-to-date releases on certain packages, but quickly narrowed the idea down to just on top of Ubuntu and APT.
+
+At the start, Pacstall pulled scripts directly from project repositories to build, and gzipped these scripts directly into its git repo. This is a problem that still unfortunately plagues the cloning history today. Additionally, Pacstall originally used a novel idea of tracking file syscalls by those scripts for file management of packages. For its first 8 months, this was the life of the program. 
+
+### 2.2 Transitioning to a Standard Format
+**Oren:**
+After a while, though, this was obviously not seen as sustainable, and a transition to a more standard format was required.
+
+The first of these important transitions was the introduction of pacscripts, which are simple bash scripts that reflect a format similar to PKGBUILDs for package creation. At first, pacscripts would build to a special location and use GNU stow for system integration with symlinks.
+
+It quickly became clear that another major transition needed to occur: if Pacstall is made for Ubuntu and Debian based systems, then it should create its packages as debs. This combination of pacscript inputs to deb outputs has been Pacstall’s standard format since 2022.
+
+### 3.1 From a Remix to a Distro
+**AJ:**
+As Rolling Rhino Remix continued to develop, it slowly moved away from being similar to an Ubuntu flavour, and more like its own distribution. At some point, our small team had the idea to ship core system updates, including the linux kernel and desktop environment, entirely through Pacstall. This idea is what became the base for what became Rhino Linux. 
+
+We got to work building this new distribution, and on the 19th October 2022, I officially announced that Rolling Rhino Remix would become deprecated in favour of Rhino Linux. It was a risky decision, at least in my opinion, to abandon our previous branding and the few articles that gave us some attention, but Rhino Linux was a large departure from the original Rolling Rhino in many aspects.
+**Oren:**
+The day that Rolling Rhino Remix was announced to sunset also happened to be the day that I found the community, and where I first came into the picture.
+
+### 3.2 Rhino PKG and Device Ports
+**AJ:**
+At the center of Rhino Linux lies our flagship package management wrapper, Rhino PKG, which was the spiritual successor to the rhino-update utility seen in Rolling Rhino Remix. Rhino PKG was infinitely more powerful; rather than just handling a system upgrade, it is intended to be the main package manager to be utilised across your system, with support for APT, Pacstall, Flatpak and Snap. Rhino PKG detects which package managers are installed on your system, will query them for packages, and displays a list of packages to install from them.
+
+We created this utility to ensure that people were keeping not just their APT packages, but Pacstall packages up to date as well. Rhino Linux diverges from traditional package management and how we ship our updates to the end user, with multiple managers interacting with each other. As we mentioned previously, core system utilities such as the Desktop Environment and Linux kernel are provided through Pacstall, on top of an Ubuntu-based APT system, and so it was a priority that users keep everything updating together.
+**Oren:**
+It was also quite early on that we established our core platform ports. I joined the project around the same time that I was working quite heavily on Ubuntu Touch ports for Pine64 devices, and with those skills to my advantage, quickly brought along a Rhino Linux port to the PinePhones and PineTabs. From there it was clear we also had to make a generic ARM64 ISO for proper development of those ports, and what is a proper generic ARM64 ISO without a Raspberry Pi version as well. This is how we came to our three major platform categories: desktop, pine/mobile, and server.
+
+### 3.3 Creating the Unicorn Desktop Experience
+**AJ:**
+We needed a desktop environment that could withstand Ubuntu’s very unstable development branch that we base Rhino Linux on. We considered GNOME, but ran into issues with the desktop environment on Rolling Rhino Remix, as Canonical would often push alpha or beta versions. Unfortunately, KDE struggled with similar issues, so we settled on XFCE, a familiar environment that was stable enough on the development branch. 
+
+Our original implementation of XFCE was quite standard for a long while, following a design similar to KDE Plasma with a taskbar at the bottom of the screen, and this stuck with us throughout development for our first few months of beta. However, we realized we wanted to provide a better desktop experience for our users, and after some thorough discussion, the Unicorn Desktop was born.
+
+We introduced a dashboard exposé, an applications grid, and a spotlight search. This, combined with intuitive keybindings made the Unicorn Desktop a powerful desktop experience for Rhino Linux, with a similar workflow to GNOME, and the stability of XFCE. Later on in the year, we also introduced optional window tiling.
+**Oren:**
+During this time, we also came to an understanding that being a terminal-oriented distribution could dissuade a lot of users, especially those with a lack of experience. We knew it would be important to reconcile this, but with limited resources and a small development team, developing a GUI for package management wouldn’t be feasible.
+
+To alleviate some of this, we developed our setup wizard to help guide users post-installation, install specific packages, and kick-start their journey. We also developed the “rhino-system” application, to retrieve and display system information, and perform updates with the click of a button. We realised that many users simply prefer a graphical front-end, even if it was just performing a simple task in the background.
+
+### 3.4 Integrating with Rhino Linux
+**Oren:**
+As Rhino introduced a port to ARM64, so too did Pacstall. While Pacstall itself is written in bash, and can be installed on any system regardless of architecture, many packages in its repositories of course cannot be - and with the new ports, certain packages were now ARM64 only as well.
+
+In addition to architecture differentiation in a similar aspect to PKGBUILDs, Pacstall also at this time introduced support of differentiation for Ubuntu and Debian versions. While this was certainly needed for a sum of the packages in Pacstall’s repository at the time, it was also motivated by Rhino Linux’s need to have packages that were meant specifically for its customized system.
+
+From here, we created our main Pacstall meta-packages, rhino-core, rhino-pine-core, and rhino-server-core, for handling management of installing the Unicorn Desktop, or lack thereof for server edition, and any other device specifics that were required. We also introduced support for the “priority” control field, so that these core packages could be marked as essential to the system.
+3.5 Mediating Between Debian and PKGBUILD
+**Oren:**
+This then became the development progress of Pacstall over the next several months - going back and forth between adding or adjusting support for features from PKGBUILDs, and support for features in Debs. Some of this was as simple as renaming variables in Pacscripts, which meant repository-wide breaking changes, and some of this was more novel, where Debian and Arch have fundamental but subtle differences in what the names of variables mean. To mediate this difference, Pacstall will often mimic Arch’s behavior on the building of packages, but as the output will be a deb, will perform extra functions on top of the traditional APT install to smooth out the behavior.
+
+### 4.1 Getting the First Rhino Release Rolling
+**AJ:**
+From April, through to August 2023, we churned out seven beta versions of Rhino Linux, before making the decision that Rhino Linux was in a cohesive and stable enough state to warrant our first full release, 2023.1. We produced a blog post, with members of the team detailing aspects of the distribution that they worked on, and published Rhino Linux to the world.
+Just a brief side note about our versioning scheme, while we are absolutely a rolling release distribution, we provide snapshot disk image releases throughout the year, to indicate a significant amount of major changes, or when the previous release has become far behind on package updates.
+
+Since our release, we had to handle both our community growth and release planning. I shifted our release roadmaps and kanban boards, and moved them over to GitHub, as it would be more accessible. We also had to handle our community growth, so we added additional onboarding and security to our Discord server, and decided to close our Matrix rooms, as we did not have the people in place to moderate it.
+
+**Oren:**
+One issue that has persisted for us when providing releases is the need for download mirrors. GitHub limits the size of release binaries to 2GB, so we had to move to SourceForge for our main providing of releases.
+
+However, SourceForge is slow, so we have continued seeking additional mirror providers. For a few months, we had a user assist in providing a mirror, but eventually they had to shut it down because it was receiving too much traffic and the cost for hosting was set to increase.
+
+The dichotomy between reliable services hostile to open source projects, requiring funding, and free services, friendly to open source projects but at the cost of speed, has consistently put pressure on us as a development team.
+
+
+### 4.2 Branching and Burning Out
+**AJ:**
+After our first few releases, we attempted to branch out from some of our initial ideas, and launched the “Unicorn Beyond XFCE Initiative”, an aim that would see contributors and community members design and distribute spins of Rhino Linux with different desktop environments. UBXI unfortunately didn’t meet its desired aim and had little momentum, but still exists as a core package for Rhino Linux, to allow for you to remove the Unicorn Desktop and replace it with a different desktop.
+
+The strain of being full-time students, having jobs and managing a Linux distribution as a very small team began to weigh on us. We were at our breaking point, as a team and as individuals, a feeling most of us likely resonate with. The project had lost its spark and none of us enjoyed to work on it anymore. Our culture as a young, small and strained development team obviously became somewhat polluted as a result of this burnout. It takes a lot of work to continue to improve a project as large as Rhino Linux, and as students, we didn’t have the most amount of free time to work on the project. Me and Oren would argue frequently, and our activity within the organisation fluctuated, it became clear that we needed to change, or the project wouldn’t survive.
+
+### 4.3 Wrestling with the Rhino
+**AJ:**
+It’s taken us a while to learn how to keep our distribution, and development team, in a stable state. We have been asked many times about Rhino Linux, “Why base a rolling release on Ubuntu? Why not Arch, or at least Debian Sid?”, and the simple answer is because a plethora of those already exist, but not this. All of us working on the project have grown up with an affinity for Ubuntu one way or another, and pushing its limits is exactly what we are intending to do.
+
+**Oren:**
+However, at the end of the day, this is exactly what Rhino Linux’s biggest pain point and source of struggle is: being based on Ubuntu, while breaking from Ubuntu’s traditional release model. The Ubuntu Devel branch is absolutely more unstable than Debian Sid, often receiving updates on packages sooner. One of the most notable examples of this being a problem is the infamous XZ-utils backdoor from 2024. Sometimes, both Sid and Devel get hit, like in the case of last year’s shift to 64-bit time.
+
+In addition, there are often several builds of a package update before it is stable, because Ubuntu applies opinionated patches that Debian will then drop. These patches, usually relating to Snap and AppArmor kernel support, which we do not provide by default, have caused breakage in Rhino a few times, where we have then had to jump to fix by providing hotfixes through Pacstall. Very recently, and not for the first time, this breakage popped up for us in the PipeWire audio library, where Ubuntu frequently pushes these types of opinionated and untested patches.
+
+### 4.4 Reevaluating and Restructuring
+**AJ:**
+After burning out, Myself and Oren, as co-leads of the distribution, sat on a video call for the first time ever and opened up to each other about our concerns, both with balancing our personal lives and about our organisation as a whole. We opened the discussion up to the rest of the Rhino Linux team, and held an in-call team discussion to allow for everyone to voice their opinions. We published a blog post, which detailed these issues that we were facing as a team, and delayed the next release of Rhino Linux indefinitely, until we resolved these issues. We would still continue to work on the project in the meantime, but we took a step back, and slowed down the pace at which we were working helped to alleviate a large part of our stress.
+
+A while later, we came back with 4 changes that we made happen:
+We provided a strong contributor’s code-of-conduct, to ensure that all contributors of the Rhino Linux project, including members of the team, had guidelines to adhere to, with mutual respect, and asking for help becoming core tenants to the Rhino Linux philosophy.
+We outlined our goals as an organisation through our mission statement.
+We did a full overhaul of our website, blog and wiki. Our blog and wiki were now being served with Nextra, and our pages were written in Markdown, reducing the barrier to contributing.
+Development channels in our Discord were streamlined, to help facilitate development further and make it easier for potential contributors to engage with the project.
+
+### 5.1 Major Shifts Towards Parity…
+**Oren:**
+In coming back, Pacstall also had several major overhauls in the last year. This began with the addition of switching from singular source variables to full source arrays, so that packages could pull source data from more than one archive at once. Shortly after, we introduced array extensions for both architecture and distribution versions, in a similar fashion to PKGBUILDs again, but with an added layer of complexity in combined distro+arch arrays as well.
+
+On the Debian end, Pacstall introduced support for version constraints on dependency fields, so that packages could more accurately handle distribution version compatibility.
+
+There has also been the adding of support for split packages, allowing multiple deb outputs to be created from a single pacscript, utilizing the `pkgbase` variable and turning the `pkgname` variable into an array - a feature that has taken several rewrites to get right.
+
+### 5.2 …Maintainability and Security…
+**Oren:**
+Alongside the management of split packages also came the introduction and integration of SRCINFO files with packages, mirroring the format again of Arch, allowing packages to have a static output of key information for external programs to then be able to read.
+
+Another major change to Pacstall that required a few rebalancing changes before it was in a stable state was the integration of bwrap for package construction, meaning pacscripts are run in an isolated sandbox environment, greatly increasing the security of package construction.
+
+More recently, Pacstall introduced support of internationalization and localization, to ensure long term maintainability of the program, and a stacktrace function seen in standard programs like Python and Rust, to catch internal errors. 
+
+### 5.3 …Scalability and Reproducibility
+**Oren:**
+Finally, with solid SRCINFO data, we were able to greatly improve our package API, and provide important build information details through a JSON format, so that we can parse this data in other programs. The key program that our API is important for is our most recently launched project, which has been in development for over two years, and has also taken several rewrites. In a similar vein to Arch Linux’s Chaotic AUR, which provides prebuilt packages produced from PKGBUILDs, we have launched the Chaotic PPR, or Pacstall Prebuilt Repository.
+
+The PPR is an APT repository that Ubuntu and Debian users can install on their systems to receive certain requested packages from Pacstall, which might have a long build time. We also provide the debs for Pacstall releases here. In order for the PPR to be successful, we had to do more major repository wide changes to pacscripts, to ensure that they all conformed to the proper standards. Then, the package changes are pushed to their SRCINFO data, the SRCINFO data is read by the API, and the PPR can then read from the API to determine what packages are allowed to be added and in what configurations.
+
+The biggest piece holding the PPR back, though, was not the development of it. As we have already alluded to in this talk, the biggest challenge has been securing the support and funding for a server large and fast enough to host and distribute packages. It is currently running on a cloud container with 1TB of storage, which feels like a lot, but when we take into account that there may be multiple versions of a package, multiple architecture output builds, and multiple distribution-specific output builds all being hosted, we realize there is absolutely a limit we can reach. Scaling the PPR to a more sustainable and larger network, although our ideal goal, is not easy to achieve for a small open source project.
+
+### 6.1 Reaching Out and Reflecting
+**AJ:**
+It’s not really a secret that we’re quite an ambitious team. I can give numerous examples of projects that we have worked on, announced and then ultimately dropped, scaled back or had slow progress on. Now this can be for a multitude of reasons, but it usually boils down to either the maintainer of the project getting burnt out, or us not realising the full project scope.
+
+Some project examples could be Rhino PKG 2, a full rewrite of Rhino PKG in nushell, that has been extremely stalled with its progress, and development being quite on-again/off-again. The same could be said for our icon pack, Unicons, with development being stalled repeatedly since the project's inception. We were also going to create a flake-style setup system, but that never came to fruition beyond an initial concept.
+
+It took me a large while to realise that it was okay to ask for help, and that it wasn’t a sign of weakness, or would damage the reputation of our distribution. Myself, Oren and the rest of the Rhino team can only put in so much of our free time into this project. We want to keep building awesome things for our users, to improve the distribution, and we have a lot of big plans, but some of those plans do require more work than we are able to put in at the moment. So in November of 2024, I made a call for contributors, and it had some success, bringing additional members into our discord, some of whom have made great contributions to the project.
+
+### 6.2 Keeping the Rhino Rolling
+**AJ:**
+We aren’t letting go of the aforementioned projects that have been stalled. The rewrite of Rhino PKG and the release of our Unicons Icon pack are both still very much in the works and on the table. We have further improvements that we want implemented into Unicorn as well, like an integrated settings program for easily configuring the desktop, and, although quite ambitious, an eventual transition to Wayland.
+
+Similarly, we still plan to create UBXI ports, and potentially provide ISO spins with different desktop environments preinstalled. Pine64 devices will be the first to receive this treatment, as we are actively looking at alternative mobile environments. Additionally, we plan to release a server edition for devices other than the Raspberry Pi, but want to develop a proper, lightweight installer to do so. 
+
+**Oren:**
+Finally, we will mention it one last time, but we recognize that if we want to realize our long term goals, we need more funding. After several discussions, we believe that the best way for us to ensure the longevity of this project is to create an official Rhino Linux Foundation. However, as we have also made clear, we are young, and quite new to this, so we admit our inexperience. If any of you have advice on how we can maintain our forward path and in a financially feasible way, we would be more than happy to talk to you after this. 
