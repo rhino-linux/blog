@@ -15,17 +15,17 @@ It hasn't even been a full month since our last snapshot disk image release, and
 
 There was a large focus on the Unicorn Desktop for this release, with us marking 4 open issues as complete relating to problems within the Unicorn Desktop.
 
-There has been a long-standing issue with Plank, our dock component, which would cause the dock to not save user preferences once a user has logged out. GitHub user [@YYutopian](https://github.com/YYutopian) suggested a [helpful solution](https://github.com/rhino-linux/tracker/issues/14) that we ultimately ended up implementing. We are happy to say that this issue has now officially been resolved.
-
-Additionally, another large issue that we solved within the Unicorn Desktop, caused by our Global Menu not taking up the full width of the panel, or over-extending causing panel bleed, has now finally been fixed. 
-
-A very noticeable bug introduced in 2025.1, in which our default "Rhino Linux" wallpaper would sometimes, on certain devices, be overwritten by an XFCE default wallpaper has been squashed as well.
+There has been a long-standing issue with Plank, our dock component, which would cause the dock to not save user preferences once a user has logged out. We are happy to say that this issue has now officially been resolved. Additionally, another large issue that we solved within the Unicorn Desktop, caused by our Global Menu not taking up the full width of the panel, or over-extending causing panel bleed, has now finally been fixed. Finally, we have solved an issue in 2025.1 where our default wallpaper would sometimes be overwritten by XFCE.
 
 ## Further notable fixes
 
-An issue, which was caused due to a conflict with `bluez-firmware` rendered our 2025.1 images for the Raspberry Pi to not be bootable, forcing users installing on a Raspberry Pi to install Rhino Linux 2024.2, and then perform a system upgrade to retrieve the latest updates. This has since been fixed.
+An issue, which was caused due to a conflict with `bluez-firmware` rendered our 2025.1 images for the Raspberry Pi to not be bootable.
+
+We [announced](/news-18) the release of the `rhino-hotfix` utility alongside the hotfix for the PipeWire audio library, we have applied this hotfix to our disk image builder to ensure that audio will work "out of the box" again.
 
 We solved an issue within our Pacstall packages that allowed for certain package files to be overwritten when a system upgrade would occur. We solved this by splitting the pacscript's `post_install` functions to make use of  `post_upgrade` as well so that certain files created by programs are not overwritten on an upgrade.
+
+Deployed devices (Pine64 and Raspberry Pi) were not properly auto-resizing to fit the volume size in several previous releases.
 
 ## Pacstall changes
 - Insert here
@@ -35,7 +35,6 @@ We solved an issue within our Pacstall packages that allowed for certain package
 - Kernel version `6.9.0-okpine` ships by default on Pine64 images.
 - Kernel version `6.11.0-raspi` ships by default on Raspberry Pi images.
 - An issue with the `hello-rhino` greeter application has been solved, to make it fit on XGA+ display resolutions.
-- We have removed `xterm` from being provided as a default package.
 
 Many thanks, and happy rolling,
 
