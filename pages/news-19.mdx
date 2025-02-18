@@ -1,41 +1,33 @@
 ---
-title: Rhino Linux 2025.2 - Plenty of fixes.
+title: Rhino Linux 2025.2 - Plenty of patches
 date: 2025/02/18
-description: It hasn't even been a full month since our last snapshot disk image release, and yet we are happy to now tag the release of Rhino Linux 2025.2, with the Rhino Linux team working to solve many long-standing open issues.
+description: It's been just about a month since our last snapshot, and we are happy to bring the release of Rhino Linux 2025.2. A lot of development has progressed, with the team working to solve multiple longer standing issues in our Bug Tracker. Our release notes are shorter this time around, but pack a solid amount of fixes that we hope improve the overall usage and stability of Rhino Linux.
 author: Rhino Linux Team
 ---
 
-# Rhino Linux 2025.2 - Plenty of fixes
+# Rhino Linux 2025.2 - Plenty of patches
 
-It hasn't even been a full month since our last snapshot disk image release, and yet we are happy to now tag the release of Rhino Linux 2025.2. A lot of development has gone on over the past month, with the Rhino Linux team working to solve many long-standing open issues in the [Rhino Linux Bug Tracker](https://github.com/rhino-linux/tracker). 
+It's been just about a month since our last snapshot, and we are happy to bring the release of Rhino Linux 2025.2. A lot of development has progressed, with the team working to solve multiple longer standing issues in our [Bug Tracker](https://github.com/rhino-linux/tracker). Our release notes are shorter this time around, but pack a solid amount of fixes that we hope improve the overall usage and stability of Rhino Linux.
 
-- **Just a small message** Smaller open source projects often operate solely on volunteer work, this includes Rhino Linux. If you would like to contribute to the development of Rhino Linux, please join our [Discord Server](https://discord.gg/reSvc8Ztk3) and contribute to the discussion. You can also report open issues to the [Rhino Linux Bug Tracker](https://github.com/rhino-linux/tracker)
+- **A brief message:** Last month's release kicked off the year with a bit of a bumpy start. We worked quickly and diligently to resolve several issues users were facing, but we strive to provide a better and fuller experience for our users, and the last release may not have met those expectations. Smaller open source projects often operate solely on volunteer work, and Rhino Linux is no exception. If you would like to contribute to the development of Rhino Linux, please join our [Discord Server](https://discord.gg/reSvc8Ztk3) and contribute to the discussion. You can also report new and view existing issues on the [Rhino Linux Bug Tracker](https://github.com/rhino-linux/tracker).
 
-## Fixes to the Unicorn Desktop
+## Unicorn Desktop
 
-There was a large focus on the Unicorn Desktop for this release, with us marking 4 open issues as complete relating to problems within the Unicorn Desktop.
-
-There has been a long-standing issue with Plank, our dock component, which would cause the dock to not save user preferences once a user has logged out. We are happy to say that this issue has now officially been resolved. Additionally, another large issue that we solved within the Unicorn Desktop, caused by our Global Menu not taking up the full width of the panel, or over-extending causing panel bleed, has now finally been fixed. Finally, we have solved an issue in 2025.1 where our default wallpaper would sometimes be overwritten by XFCE.
-
-## Further notable fixes
-
-An issue, which was caused due to a conflict with `bluez-firmware` rendered our 2025.1 images for the Raspberry Pi to not be bootable.
-
-We [announced](/news-18) the release of the `rhino-hotfix` utility alongside the hotfix for the PipeWire audio library, we have applied this hotfix to our disk image builder to ensure that audio will work "out of the box" again.
-
-We solved an issue within our Pacstall packages that allowed for certain package files to be overwritten when a system upgrade would occur. We solved this by splitting the pacscript's `post_install` functions to make use of  `post_upgrade` as well so that certain files created by programs are not overwritten on an upgrade.
-
-Deployed devices (Pine64 and Raspberry Pi) were not properly auto-resizing to fit the volume size in several previous releases.
-
-## Pacstall changes
-- Insert here
+The following issues relating to the Unicorn Desktop have been resolved:
+- Updating the package no longer overwrites existing configuration files
+- The Global Menu no longer causes the end of the panel to extend off of the screen
+- The desktop wallpaper now properly displays on all screen sizes
+- Issues with certain devices lacking audio out-of-the-box have been resolved
 
 ## As well as...
 - Kernel version `6.12.12` ships by default on Generic ISO disk images.
 - Kernel version `6.9.0-okpine` ships by default on Pine64 images.
 - Kernel version `6.11.0-raspi` ships by default on Raspberry Pi images.
-- An issue with the `hello-rhino` greeter application has been solved, to make it fit on XGA+ display resolutions.
+- Pacstall `6.1.1` has been [released](https://github.com/pacstall/pacstall/releases/tag/6.1.1) with some minor bug fixes.
+- Our new `rhino-hotfix` utility ships by default on all images, which you can read more about [here](/news-18).
+- Issues with Raspberry Pi and Pine64 boots have been resolved.
+- Deployed images now properly auto-resize to fill the image volume on boot again.
 
 Many thanks, and happy rolling,
 
-The Rhino Linux Team.
+The Rhino Linux Team
