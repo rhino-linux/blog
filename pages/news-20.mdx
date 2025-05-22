@@ -1,23 +1,36 @@
 ---
-title: KDE Plasma UBXI package released + more.
-date: 2025/05/22
-description: After 3 months of development and fine-tuning we are now happy to announce that the KDE Plasma UBXI Desktop package, bringing the experience of Unicorn straight to KDE Plasma.
+title: UBXI KDE 6 Desktop released + RPK2 now in testing!
+date: 2025/05/23
+description: We are proud to announce the release of the first official UBXI port, based on the KDE Plasma 6 desktop environment, as well as calls for testing on our Nushell rewrite of RPK, our meta-package manager. Both projects have been in the works for quite some time, and we are excited to finally bring them to you.
 author: Rhino Linux Team
 ---
 
-# KDE Plasma UBXI package released + more.
+# UBXI KDE 6 Desktop released + RPK2 now in testing!
 
-In 2023, we detailed our plans for the [Unicorn Beyond XFCE Initiative](https://blog.rhinolinux.org/news-9), with the simple goal of porting the Unicorn workflow, theming, and design to other desktop environments. These should then be packaged up in a pacscript for use on Rhino Linux. After 3 months of development and fine-tuning we are now happy to announce that the KDE Plasma UBXI Desktop package, bringing the experience of Unicorn straight to KDE Plasma.
+We are proud to announce the release of the first official UBXI port, based on the KDE Plasma 6 desktop environment, as well as calls for testing on our Nushell rewrite of RPK, our meta-package manager. Both projects have been in the works for quite some time, and we are excited to finally bring them to you.
 
-To switch to the KDE Plasma desktop on Rhino Linux, please install it with `rpk install ubxi-kde-desktop-git`.
+## UBXI KDE 6 Desktop
 
-We plan to offer a disk image with KDE UBXI, meaning you can use Rhino Linux with Plasma right out of the box, by the end of 2025. However, since we are nearing our next release, this won't be possible within our current release window.
+In 2023, we detailed our plans for the [Unicorn Beyond XFCE Initiative](https://blog.rhinolinux.org/news-9), with the simple goal of porting the Unicorn workflow, theming, and other design elements to desktop environments beyond XFCE. These UBXI ports would be packaged into pacscripts, just like the standard Unicorn Desktop, and shipped into Pacstall's repositories for use on Rhino Linux systems. We invited members of the community to contribute their own UBXI ports, which we could then bring in to provide officially under the Rhino Linux Team.
 
-## rhino-pkg2 in stampede.
+Spearheaded by one of our community members, [villamorrd](https://github.com/villamorrd), after 3 months of development and fine-tuning, we are proud to bring you the [UBXI KDE Desktop](https://github.com/rhino-linux/ubxi-kde-desktop), based on Plasma 6. This port brings the full Unicorn experience to KDE, from the workflow to the color scheme, and we are very happy with how it turned out - we hope you are too.
 
-Our rewrite of rhino-pkg, rpk2, has now finally hit stampede (our testing grounds), meaning that it is nearing release. People can install and test it either by: `pacstall -PI rhino-stampede-dev`, which includes the unicons icon pack while it is in progress, or directly with `rhinu-pkg-git`.
+To switch to the UBXI KDE Desktop on Rhino Linux, simply run: `rpk install ubxi-kde-desktop-git`
 
-The command can be invoked either as `rhinu-pkg` or as `rpk2`, until it is fully released and merged into rhino-pkg.
+We plan to offer additional disk images with the UBXI KDE Desktop shipped out-of-the-box by the end of 2025. Until then, be sure to let us know what you think in [our Discord](https://discord.gg/uhdCz8vwV9), and if you have any issues or requests, please report them to [our Features & Issues Tracker](https://github.com/rhino-linux/tracker) with `bug(ubxi-kde)` or `prop(ubxi-kde)`.
 
-Many thanks,
-The Rhino Linux Team.
+## RPK2 now in testing
+
+Our rewrite of Rhino PKG (RPK) in Nushell, RPK2, has finally hit our testing grounds, `rhino-stampede-dev`. Given the integral role that RPK plays in Rhino Linux, we felt it best to release the rewrite as a secondary package first, to ensure any issues that slipped through development are caught before making their way to the main stage.
+
+Users can install the full Rhino Stampede testing suite, which includes both the Unicons icon pack and RPK2, with: `rpk install rhino-stampede-dev`
+
+Or, to install just RPK2, run: `rpk install rhinu-pkg-git`
+
+The command may then be invoked as either `rhinu-pkg` or `rpk2`, until it is fully released and merged into the standard `rhino-pkg`. All other syntax should be the same!
+
+Community feedback on the rewrite over the next few months will be crucial - you can help take part in shaping the future of Rhino Linux! Just as with the new UBXI port, let us know about your experiences with it in [our Discord](https://discord.gg/uhdCz8vwV9), and please report any issues found or feature requests in [our Features & Issues Tracker](https://github.com/rhino-linux/tracker) with `bug(rpk2)` or `prop(rpk2)`.
+
+Many thanks, and as always happy rolling, 
+
+**The Rhino Linux Team**
