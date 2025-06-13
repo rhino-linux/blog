@@ -1,31 +1,31 @@
 ---
-title: Rhino PKG 2 out now (finally)!
+title: RPK2 out now!
 date: 2025/06/13
-description: At FOSDEM '25, we left the stage with a promise to revive some of our stalled projects. After a long development period, we are proud to begin delivering on that promise with the release of Rhino PKG 2
+description: At FOSDEM '25, we left the stage with a promise to revive some of our stalled projects. After a long development period, we are proud to be delivering on that promise with the release of RPK2, our rewrite of Rhino PKG in Nushell!
 author: Rhino Linux Team
 ---
 
-# Rhino PKG 2 out now (finally)!
+# RPK2 out now!
 
 Earlier this year, two of our team members took to the stage at FOSDEM to talk about some of the struggles that come with managing an open source project of our size. We reflected on some of our failures and successes, and left with a promise:
 
 > We aren’t letting go of the aforementioned projects that have been stalled. The rewrite of Rhino PKG and the release of our Unicons Icon pack are both still very much in the works and on the table.
 
-As you may have seen in our [previous blog post](https://blog.rhinolinux.org), we announced that Rhino PKG 2 had entered testing. We are happy to say that testing has gone smoothly, and with some minor adjustments, Rhino PKG 2 is now officially ready for release!
+As you may have seen in our [previous blog post](/news-20), we announced that RPK2, our rewrite of Rhino PKG in Nushell, had entered testing. We are happy to say that testing has gone smoothly, and with some minor adjustments, RPK2 is now officially out for release!
 
 ## Highlights:
 
 - Rhino PKG now has an updated display, with content organised into tables.
 - The `--description/-d` flag will now display the description of the package.
 - `rhino-pkg remove` now properly only shows installed packages, alongside a version number.
-- Introduced a new command, `rhino-pkg sync` to update repositories without upgrading packages.
-- All commands now have a shorthand available, check the wiki for more information.
+- The new command `rhino-pkg sync` will update repositories without upgrading packages.
+- All commands now have a shorthand available (e.g. `install` -> `i`).
 - Packages will automatically be selected if there is only one option available.
-- Classic snaps are now installable with Rhino PKG
-- Packages installed with Pacstall no longer duplicate to show up as apt packages as well.
+- Classic snaps are now installable from selection.
+- Packages installed with Pacstall no longer duplicate to show up as APT packages.
 
-We recommend all users review the updated [Rhino PKG Wiki](https://wiki.rhinolinux.org/user/rpk).
+We recommend all users review the updated [Rhino PKG Wiki](https://wiki.rhinolinux.org/user/rpk) or `rhino-pkg help` message to learn about the new commands and shorthands.
 
-Many thanks, and happy rolling
+Many thanks, and happy rolling,
 
 The Rhino Linux Team. 
