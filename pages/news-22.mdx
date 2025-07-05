@@ -1,0 +1,79 @@
+---
+title: Rhino Linux 2025.3 released, UBports Sponsorship, and a Call for Contributors!
+date: 2025/07/05
+description: It's been a few months since our last disk image release - as usual, we've been hard at work and rolling along, and we are proud of what this snapshot brings together! In addition, we have a new sponsorship and partner, UBports, who will help guide our next upcoming releases, and are making another call for developers and contributors.
+author: Rhino Linux Team
+---
+
+# Rhino Linux 2025.3 released, UBPorts Sponsorship, and a Call for Contributors!
+
+It's been a few months since our last disk image release - as usual, we've been hard at work and rolling along, and we are proud of what this snapshot brings together!
+
+We have quite a few highlights for this release, some of which have gotten their own blog posts already, and some of which we have been holding onto for this release announcement. All of these changes have combined to bring what we feel is another awesome release for you.
+
+In addition, we have a new sponsorship and partner, UBports, who will help guide our next upcoming releases, and are making another call for developers and contributors. See below for more information on all of the above!
+
+To upgrade to 2025.3 please run: `rpk update -y`
+
+## RPK2
+
+2025.3 images ship with RPK2, our rewrite of Rhino PKG in Nushell, by default! We have already written a [blog post](/news-20) detailing the changes that came in RPK2, which we recommend checking out if you haven't already.
+
+We also recommend all users review the updated [Rhino PKG Wiki](https://wiki.rhinolinux.org/user/rpk) or `rpk help` message to learn about the new commands and shorthands.
+
+## UBXI KDE Desktop
+
+We have also announced the release of our UBXI KDE Desktop package this release cycle, based on Plasma 6! You can read the full announcement [here](https://blog.rhinolinux.org/news-20).
+
+Additionally, we want to reiterate that we plan to release official UBXI KDE disk image spins by the end of the year, shipping alongside the standard Unicorn Desktop images, to allow for more desktop options out-of-the-box.
+
+## Pacstall
+
+Pacstall has had a few major bumps in between Rhino Linux 2025.2 and 2025.3. As we have mentioned before, with Pacstall being integral to Rhino Linux, as well as sharing developers between the projects, we feel it's important to share information about these releases as well.
+
+Pacstall's `6.2.x` series adds a few quality of life features such as:
+- Allowing `PACSTALL_TMPDIR` to be specified in the environment.
+- Adding a new `-Lu` / `--list-upgrades` command to display package upgrades, without proceeding with them.
+- Add `-M` / `--mark` to hold/unhold packages, allowing users to prevent specificed packages from upgrading.
+
+Pacstall's `6.3.x` series came with a new internal `KVER` variable and `limit_kver` pacscript variable, which checks the current kernel running and limits builds based on provided constraints.
+
+As always, multiple bugs were squashed with both these releases and minor versions, the full changelog for Pacstall can be found on [their releases page](https://github.com/pacstall/pacstall/releases).
+
+## As well as...
+
+- Kernel version `6.15.4-generic` ships by default on Generic ISO disk images.
+- Kernel version `6.9.0-okpine` ships by default on PINE64 images.
+- Kernel version `6.14.0-raspi` ships by default on Raspberry Pi images.
+- `celeste-bin` has been replaced with `rclone-browser` on base installs.
+- All arm64 images now use `firefox-bin`, provided upstream from Mozilla.
+
+## Rhino Linux is now sponsored by the UBPorts Foundation!
+
+We are extremely excited to announce that Rhino Linux has been officially sponsored by The UBPorts Foundation, the maintainers of Ubuntu Touch and creators of Lomiri, the convergence desktop environment.
+
+As part of this collaboration, Rhino Linux will be contributing patches upstream to Lomiri, helping to sustain and support its ongoing development, and assisting in the transition to Qt6.
+
+Looking ahead, Rhino Linux 2025.4 will see Lomiri becoming the official Desktop Environment for Rhino Linux on all PINE64 devices, replacing Unicorn Mobile, bringing a more integrated mobile experience to Rhino Linux.
+
+This will effectively make Rhino Linux on PINE64 devices a rolling counterpart to Ubuntu Touch. Where Ubuntu Touch is read-only, based on LTS, and receives OTA/all-at-once updates, Rhino Linux is mutable, based on the development branch, and receives rolling updates; but both are based on Ubuntu, and both will be using Lomiri as their mobile desktop environment.
+
+We are looking forward the continued growth of Rhino Linux, Ubuntu Touch, and Lomiri. We are grateful for this opportunity and look forward to investing our sponsorship into the Rhino Linux distribution, infrastructure, and outreach. Stay tuned for updates.
+
+## A Call for Contributors
+
+Rhino Linux is still rolling along, but at the pace we are moving, we continue to need more contributors willing to join the herd to keep us sustained. We started this distribution while still in school, but most of us have graduated now and are moving on to full-time jobs. With our time stretched more thin, we rely on our community to help keep Rhino Linux rolling. As Rhino Linux continues to grow, our base of long-term contributors is what most supports development of the project.
+
+People can contribute meaningfully in many different areas, and not all require deep programming knowledge:
+- Contributing code.
+- Graphical design for logos and icons.
+- Testing software and generated disk images prior to release.
+- Writing blog posts and ensuring documentation is up-to-date.
+- Helping members of our community and resolving their issues.
+- Infrastructure hosting.
+
+If you would like to contribute to Rhino Linux, please [join our Discord](https://discord.gg/reSvc8Ztk3).
+
+Many thanks, and happy rolling,
+
+The Rhino Linux Team
