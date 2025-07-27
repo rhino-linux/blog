@@ -24,9 +24,10 @@
     "semi": false
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.11",
     "autoprefixer": "^10.4.20",
     "concurrently": "^9.0.0",
     "postcss": "^8.4.45",
-    "tailwindcss": "^3.4.10"
+    "tailwindcss": "^4.1.11"
   }
 }

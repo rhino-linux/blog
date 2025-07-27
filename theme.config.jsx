@@ -1,5 +1,5 @@
 export default {
-  footer: <a className="nx-mt-24 nx-block" href="/">Rhino Linux Blog</a>,
+  footer: <a className="nx-mt-24 nx:block" href="/">Rhino Linux Blog</a>,
   head: ({ title, meta }) => (
     <>
       <meta property="og:title" content={title || 'Rhino Linux Blog'} />
