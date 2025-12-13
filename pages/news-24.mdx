@@ -1,0 +1,34 @@
+---
+title: Rhino Linux 2025.4, and what to expect from us in 2026.
+date: 2025/12/14
+description: We are happy to announce our next snapshot disk image release, 2025.4. Additionally, we would like to communicate with you and set expectations for what the Rhino Linux Team will be working towards in 2026.
+author: Rhino Linux Team
+---
+
+We are happy to announce our next snapshot disk image release, 2025.4. Over the past few months we have directed a large portion of our focus on delivering for our sponsorship with the UBPorts Foundation.
+
+Additionally, we would like to communicate with you and set expectations for what the Rhino Linux Team will be working towards in 2026.
+
+## Lomiri on Rhino
+
+As mentioned [previously](https://blog.rhinolinux.org/news-22), our sponsorship agreement with UBPorts stipulated that we would be assisting in the packaging and distribution of Lomiri for Rhino Linux Pine64 devices. We are happy to announce that we have made significant and substantial progress towards these goals with us shipping two new packages: [rhino-pine-lomiri-core](https://pacstall.dev/packages/rhino-pine-lomiri-core), and [ubxi-lomiri-desktop](https://pacstall.dev/packages/ubxi-lomiri-desktop). The `ubxi-lomiri-desktop` package is compatible on both Pine64 devices, as expected, as well as our generic images.
+
+We have also begun the process of rolling out Lomiri as our default desktop environment for our Pine64 devices, with the PineTab 2 being first to receive this treatment. We will be continuing the support and maintenance of Unicorn Mobile disk images for Pine64 devices as well.
+
+## As well as...
+
+- Multiple bugs with [Pacstall](https://pacstall.dev) have been resolved, the full changelog for Pacstall can be found on [their releases page](https://github.com/pacstall/pacstall/releases).
+- Kernel version `6.17.5-generic` ships by default on Generic ISO disk images.
+- Kernel version `6.9.0-okpine` ships by default on PINE64 images.
+- Kernel version `6.17.0-raspi` ships by default on Raspberry Pi images.
+
+## Rhino Linux in 2026
+
+Looking towards 2026, one commitment we are willing to make will be more frequent snapshot releases. Quite often we have had situations arise where certain disk images experience issues that are platform specific. Traditionally, we have allowed for these to block a snapshot release until resolved, ensuring that disk images release with the same version number, at the same time. Going forward, we will be publishing images we have verified work correctly, and if issues arise on certain platforms, then we will delay or skip releasing for that platform. Our hope with this is that we can continue to iterate and resolve issues much quicker than we otherwise would have.
+
+Additionally, we are going to shake-up how we communicate our changes to you, our users. With our new commitment to more frequent (out of sync) snapshot releases. A few times per year we will make a "What changed in Rhino Linux" blog post, with a collection and breakdown of our changes from the last time we posted about them.
+
+Finally, we are still actively working towards some commitments we made in 2025, with us now aiming to release UBXI KDE disk image spins sometime in the new year, as well as additional UBXI packages and improving our OS builder workflows and documentation.
+
+Many thanks, and happy ~~holidays~~ rolling,
+The Rhino Linux Team.
