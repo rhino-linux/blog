@@ -1,6 +1,6 @@
 ---
 title: Rhino Linux 2025.4, and what to expect from us in 2026.
-date: 2025/12/14
+date: 2025/12/15
 description: We are happy to announce our 2025.4 snapshot disk image release! Additionally, we would like to set expectations for what the Rhino Linux Team will be working towards in 2026.
 author: Rhino Linux Team
 ---
@@ -13,13 +13,15 @@ Additionally, we would like to set expectations for what the Rhino Linux Team wi
 
 As mentioned [previously](https://blog.rhinolinux.org/news-22), our collaboration with UBPorts stipulated that we would be assisting in the development of Lomiri upstream, as well as the packaging and distribution of Lomiri for Rhino Linux PINE64 devices. We are happy to announce that we have made significant and substantial progress towards these goals with us shipping two new packages: [rhino-pine-lomiri-core](https://pacstall.dev/packages/rhino-pine-lomiri-core), and [ubxi-lomiri-desktop](https://pacstall.dev/packages/ubxi-lomiri-desktop). The `ubxi-lomiri-desktop` package is compatible on both PINE64 devices, as expected, as well as our generic images.
 
-We have also begun the process of rolling out Lomiri as our default desktop environment for our PINE64 devices, with the PineTab and PineTab2 being first to receive this treatment. For now, we will be also be continuing the support and maintenance of Unicorn Mobile disk images for PINE64 devices.
+We have also begun the process of rolling out Lomiri as our default desktop environment for our PINE64 devices. For now, we will be also be continuing the support and maintenance of Unicorn Mobile disk images for PINE64 devices.
 
 ## As well as...
 
 - Multiple bugs with [Pacstall](https://pacstall.dev) have been resolved. The full changelog for Pacstall can be found on [their releases page](https://github.com/pacstall/pacstall/releases).
 - Kernel version `6.18.1-generic` ships by default on Generic ISO disk images.
-- Kernel version `6.9.0-okpine` ships by default on PINE64 images.
+- Kernel version `6.12.62-sunxi` ships by default on PinePhone & PineTab images.
+- Kernel version `6.18.1-rockchip` ships by default on PinePhone Pro images.
+- Kernel version `6.9.0-okpine` ships by default on PineTab2 images.
 - Kernel version `6.17.0-raspi` ships by default on Raspberry Pi images.
 
 ## Rhino Linux in 2026
