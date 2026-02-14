@@ -5,7 +5,7 @@ description: A recent change in upstream Ubuntu's coreutils (via uutils) causes 
 author: Rhino Linux Team
 ---
 
-A recent change in upstream Ubuntu's coreutils (via uutils) causes breakage to Pacstall, which prevents it from being able to run *any* commands. We have pushed an emergency patch to resolve this issue, but running `rpk update` may result in Pacstall being unable to update itself. To fix this, please run the following command to update it manually:
+A recent change in upstream Ubuntu's coreutils (via uutils) causes breakage to Pacstall, which prevents it from being able to run *any* commands. We have pushed an [emergency patch](https://github.com/pacstall/pacstall/releases/tag/6.3.9) to resolve this issue, but running `rpk update` may result in Pacstall being unable to update itself. To fix this, please run the following command to update it manually:
 ```bash
 LC_ALL=C pacstall -U
 ```
