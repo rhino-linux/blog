@@ -1,0 +1,12 @@
+---
+title: Important Pacstall update
+date: 2025/2/14
+description: A recent change in upstream Ubuntu's coreutils (via uutils) causes breakage to Pacstall, and running `rpk update` may prevent Pacstall from being able to update itself. Please manually run `LC_ALL=C pacstall -U` to resolve this issue.
+author: Rhino Linux Team
+---
+
+A recent change in upstream Ubuntu's coreutils (via uutils) causes breakage to Pacstall, which prevents it from being able to run *any* commands. We have pushed an emergency patch to resolve this issue, but running `rpk update` may result in Pacstall being unable to update itself. To fix this, please run the following command to update it manually:
+```bash
+LC_ALL=C pacstall -U
+```
+We apologize for any caused inconvenience.
