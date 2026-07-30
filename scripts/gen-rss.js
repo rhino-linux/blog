@@ -14,7 +14,7 @@ async function generate() {
   const allPosts = []
   await Promise.all(
     posts.map(async (name) => {
-      if (name.startsWith('index.')) return
+      if (name.startsWith('index.') || name.startsWith('_') || !name.endsWith('.mdx')) return
 
       const content = await fs.readFile(
         path.join(__dirname, '..', 'pages', name)
@@ -23,7 +23,7 @@ async function generate() {
 
       allPosts.push({
         title: frontmatter.data.title,
-        url: '/' + name.replace(/\.mdx?/, ''),
+        url: 'https://blog.rhinolinux.org/' + name.replace(/\.mdx?/, ''),
         date: frontmatter.data.date,
         description: frontmatter.data.description,
         author: frontmatter.data.author
@@ -36,6 +36,7 @@ async function generate() {
       feed.item(post)
   })
   await fs.writeFile('./public/feed.xml', feed.xml({ indent: true }))
+  await fs.writeFile('./public/posts.json', JSON.stringify(allPosts, null, 2))
 }
 
 generate()
